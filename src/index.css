@@ -1,12 +1,16 @@
+:root {
+	--beige: #eef5db;
+	--tea-green: #c7efcf;
+	--dutch-white: #d6d1b1;
+	--middle-yellow-red: #f0b67f;
+	--orange-red-crayola: #fe5f55;
+}
+
 /* Box sizing rules */
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
-}
-
-body {
-	background: #000;
 }
 
 /* Remove default margin */

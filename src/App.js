@@ -31,16 +31,16 @@ function App() {
 			{/* canvas color */}
 			<color
 				attach='background'
-				args={['#000']}
+				args={['#eef5db']}
 			/>
 			{/* Post processing */}
 			<EffectComposer>
-				{/* <Bloom
-					intensity={0.5}
-					luminanceThreshold={0.5}
-					luminanceSmoothing={0.9}
+				<Bloom
+					intensity={0.3}
+					luminanceThreshold={0.1}
+					luminanceSmoothing={0.5}
 					height={1000}
-				/> */}
+				/>
 				<DepthOfField />
 				<Vignette
 					eskil={false}
@@ -61,14 +61,6 @@ function App() {
 						floatIntensity={0.4}
 						rotationIntensity={0.4}
 					>
-						<rectAreaLight
-							width={2.5}
-							height={1.65}
-							intensity={65}
-							color={'#fff'}
-							rotation={[0.1, Math.PI, 0]}
-							position={[0, 0.55, -1.15]}
-						/>
 						<primitive
 							object={iPhone.scene}
 							position={[-3, -1, -1]}
@@ -95,14 +87,6 @@ function App() {
 						floatIntensity={0.4}
 						rotationIntensity={0.4}
 					>
-						<rectAreaLight
-							width={2.5}
-							height={1.65}
-							intensity={65}
-							color={'rgba(238, 238, 228, 0.9)'}
-							rotation={[0.1, Math.PI, 0]}
-							position={[0, 0.55, -1.15]}
-						/>
 						<primitive
 							object={iMac.scene}
 							position={[3, -1, 0]}
@@ -124,12 +108,12 @@ function App() {
 						</primitive>
 					</Float>
 					{/* Sparkles */}
-					<Sparkles
+					{/* <Sparkles
 						noise={0}
 						count={500}
 						speed={0.1}
 						size={0.6}
-						color={'#FFD2BE'}
+						color={'#fe5f55'}
 						opacity={10}
 						scale={[20, 100, 20]}
 					></Sparkles>
@@ -138,10 +122,10 @@ function App() {
 						count={50}
 						speed={0.1}
 						size={3}
-						color={'#FFF'}
+						color={'#fe5f55'}
 						opacity={2}
 						scale={[30, 100, 10]}
-					></Sparkles>
+					></Sparkles> */}
 				</Scroll>
 				{/* HTML content */}
 				<Scroll

@@ -1,6 +1,8 @@
 html,
 body,
 #root {
+	color: var(--dutch-white);
+	background: var(--beige);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -16,7 +18,6 @@ body,
 	align-items: center;
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
-	color: white;
 	padding: 40px;
 	position: absolute;
 	top: 0px;
@@ -48,8 +49,7 @@ h2,
 h3,
 h4,
 h5 {
-	font-family: 'Italiana', serif;
-	color: #fff;
+	font-family: 'Roboto', sans-serif;
 	margin-bottom: 32px !important;
 }
 
@@ -63,27 +63,9 @@ h2 {
 
 p {
 	font-family: 'Roboto', sans-serif;
-	color: #fff;
 	font-weight: 300;
 	font-size: 18px;
 	line-height: 1.8em;
-}
-
-.btn--sound {
-	position: fixed;
-	bottom: 40px;
-	right: 40px;
-	z-index: 9;
-	background: transparent;
-	box-shadow: none;
-	border: none;
-	color: rgba(255, 255, 255, 0.4);
-	display: none;
-}
-
-.btn--sound span {
-	font-size: 80px !important;
-	font-weight: 200;
 }
 
 /* footer */
