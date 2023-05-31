@@ -65,22 +65,7 @@ function App() {
 							object={iPhone.scene}
 							position={[-3, -1, -1]}
 							rotation={[0, 1, 0]}
-						>
-							<group>
-								<Html
-									transform
-									wrapperClass='phoneScreen'
-									distanceFactor={1}
-									position={[0.17, 1.33, 0.08]}
-									rotation-x={0}
-								>
-									<iframe
-										title='phone'
-										src='https://ecommerce-sepia-beta.vercel.app/'
-									/>
-								</Html>
-							</group>
-						</primitive>
+						/>
 					</Float>
 					{/* MacBook */}
 					<Float
@@ -91,21 +76,7 @@ function App() {
 							object={iMac.scene}
 							position={[3, -1, 0]}
 							rotation={[0.25, -1, 0]}
-						>
-							<Html
-								transform
-								fullscreen
-								wrapperClass='laptopScreen'
-								distanceFactor={1.17}
-								position={[0, 1.56, -1.4]}
-								rotation-x={-0.256}
-							>
-								<iframe
-									title='macbook'
-									src='https://jameslyddon.github.io/Porto/'
-								/>
-							</Html>
-						</primitive>
+						/>
 					</Float>
 					{/* Sparkles */}
 					{/* <Sparkles
