@@ -1,27 +1,43 @@
 import './App.css'
+import { useEffect } from 'react'
 import {
 	Scroll,
 	ScrollControls,
 	useGLTF,
 	Environment,
-	Float,
-	PresentationControls,
-	OrbitControls,
-	ContactShadows,
-	Html,
-	Sparkles,
-	Text,
-	Text3D,
-	Center,
-	Image,
+  useTexture
 } from '@react-three/drei'
 import { Bloom, DepthOfField, EffectComposer, Vignette } from '@react-three/postprocessing'
-import { useEffect } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import * as THREE from 'three'
+// Components
+import Section1 from './components/Section1'
 
-import jim from './img/jim.jpg'
+// texture images
+import txt1 from './matcaps/7B5254_E9DCC7_B19986_C8AC91.png'
+import txt2 from './matcaps/74A192_041B0D_194C33_235B4C.png'
+
+// materials
+const material1 = new THREE.MeshMatcapMaterial()
+const material2 = new THREE.MeshMatcapMaterial()
+
+
+
+
 
 function App() {
+
+	const matcap1 = useTexture(txt1)
+	const matcap2 = useTexture(txt2)
+
+
+	useEffect(() => {
+		material1.matcap = matcap1
+		material1.needsUpdate = true
+		material2.matcap = matcap2
+		material2.needsUpdate = true
+	}, [])
+
 	// models
 	const iMac = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
 	const reactLogo = useGLTF(
@@ -32,7 +48,11 @@ function App() {
 		'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/open-book/model.gltf'
 	)
 
-	// fonts
+    // 2D fonts
+    const spartan = './fonts/league-spartan-v11-latin-regular.woff2'
+
+	// 3D fonts
+  const cherry = './fonts/Cherry Bomb One_Regular.json'
 	const paytone = './fonts/Paytone One_Regular.json'
 	const helvetiker = './fonts/helvetiker_regular.typeface.json'
 	const damion = './fonts/Damion_Regular.json'
@@ -51,8 +71,8 @@ function App() {
 			{/* Post processing */}
 			<EffectComposer>
 				<Bloom
-					intensity={0.2}
-					luminanceThreshold={0.1}
+					intensity={0.1}
+					luminanceThreshold={0.5}
 					luminanceSmoothing={0.5}
 					height={1000}
 				/>
@@ -71,85 +91,21 @@ function App() {
 			>
 				{/* 3D content */}
 				<Scroll>
-					{/* Row 1 */}
-					<PresentationControls
-						polar={[-0.2, 0.2]} // Vertical limits
-						azimuth={[-0.2, 0.2]} // Horizontal limits
-						snap={true}
-						config={{ mass: 5, tension: 170, friction: 26 }}
-					>
-						{/* iPhone */}
-						<Float
-							floatIntensity={0.4}
-							rotationIntensity={0.4}
-						>
-							<primitive
-								object={iPhone.scene}
-								position={[-2.9, -1, 2]}
-								rotation={[0.25, 1.5, 0]}
-								scale={0.5}
-							/>
-						</Float>
-						{/* MacBook */}
-						<Float
-							floatIntensity={0.4}
-							rotationIntensity={0.4}
-						>
-							<primitive
-								object={iMac.scene}
-								position={[5, 0.5, -1.5]}
-								rotation={[1, -0.75, 0.5]}
-							>
-								<Image
-									url={jim}
-                  scale-y={2}
-                  scale-x={3}
-									distanceFactor={1.17}
-									position={[0, 1.56, -1.4]}
-									rotation-x={-0.256}
-								/>
-							</primitive>
-						</Float>
-						<Float
-							floatIntensity={0.4}
-							rotationIntensity={0.4}
-						>
-							<Center position={[0, 1, 1]}>
-								<Text3D
-									font={paytone}
-									size={0.5}
-								>
-									Hi!
-									<meshNormalMaterial />
-								</Text3D>
-							</Center>
-							<Center position={[0, 0, 1]}>
-								<Text3D
-									font={helvetiker}
-									size={0.5}
-								>
-									I'm James Lyddon
-									<meshNormalMaterial />
-								</Text3D>
-							</Center>
-						</Float>
-					</PresentationControls>
+					<Section1 material1={material1} material2={material2}/>
 				</Scroll>
 				{/* HTML content */}
 				<Scroll
 					html
 					style={{ width: '100%' }}
 				>
-					<Container style={{ position: 'relative' }}>
+					<Container style={{ position: 'relative', color: '#004F2D' }}>
 						{/* 1 */}
 						<Row
 							className='text-center align-items-center justify-content-center'
 							style={{ position: 'absolute', width: '100%', height: '100vh', padding: '0 30px' }}
 						>
 							<Col sx={6}>
-								<div>
-									<h1 style={{ marginBottom: 0 }}></h1>
-								</div>
+              <h1 style={{ marginBottom: 0 }}></h1>
 							</Col>
 						</Row>
 						{/* 2 */}
@@ -159,7 +115,17 @@ function App() {
 						>
 							<Col sx={6}>
 								<div>
-									<h1 style={{ marginBottom: 0 }}>Row 2</h1>
+									<p style={{ marginBottom: 0 }}>
+                    I've been learning web development over the last few years, initially self-taught but more recently as a Master's student at the Univerity of York.
+                  </p>
+                  <br />
+									<p style={{ marginBottom: 0 }}>
+                    My main focus has been building front end experiences with JavaScript & React along with a little game development with C#.
+                  </p>
+                  <br />
+									<p style={{ marginBottom: 0 }}>
+                    Currently I'm looking for opportunities to join a team and work on larger projects. Eventually I'd like to expand into the back end and become a full stack developer 
+                  </p>
 								</div>
 							</Col>
 						</Row>
