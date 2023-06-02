@@ -28,7 +28,7 @@ const Section1 = ({material1, material2}) => {
     >
       <primitive
         object={iPhone.scene}
-        position={[3.5, 0.75, 1]}
+        position={[3, 0.75, 1]}
         rotation={[-0.25, -1, -0.5]}
         scale={0.5}
       >
@@ -50,7 +50,7 @@ const Section1 = ({material1, material2}) => {
     >
       <primitive
         object={iMac.scene}
-        position={[5, -2, -1.5]}
+        position={[4, -2, -1.5]}
         rotation={[1, -0.75, 0.5]}
       >
         <Image
